@@ -1,0 +1,12 @@
+{
+    
+    "SearchInput": {
+        "type": "css",
+        "selector": ".mp-search-input"
+    },
+    "HeaderTab": {
+        "type": "css",
+        "selector": ".mp-tabs li"
+    }
+    
+}

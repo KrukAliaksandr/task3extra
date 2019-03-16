@@ -1,0 +1,31 @@
+{
+  "name": "task3extra",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "cucumber": "^5.1.0",
+    "eslint": "^5.15.1",
+    "protractor": "^5.4.2"
+  },
+  "devDependencies": {
+    "protractor-cucumber-framework": "^6.1.1"
+  },
+  "scripts": {
+    "postinstall": "webdriver-manager update --gecko=false",
+    "e2e": "protractor ./test/nativeScript/config/config.js",
+    "e2e:update": "node ./node_modules/protractor/bin/webdriver-manager update --gecko=false",
+    "e2e:start-server": "start cmd /k \"node_modules\\.bin\\webdriver-manager start\"",
+    "e2e:generate-report": "node ./test/SanDisk/config/reporter.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KrukAliaksandr/task3extra.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KrukAliaksandr/task3extra/issues"
+  },
+  "homepage": "https://github.com/KrukAliaksandr/task3extra#readme"
+}
