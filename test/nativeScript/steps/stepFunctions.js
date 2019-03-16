@@ -52,5 +52,4 @@ module.exports = {
 	getPageObjectElement,
 	getElementFromCollectionByText,
 	getSomeElementFromArray,
-	getElementByText
 };
