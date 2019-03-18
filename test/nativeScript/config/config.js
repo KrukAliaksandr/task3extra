@@ -15,7 +15,7 @@ exports.config = {
 	disableChecks:true,
 	cucumberOpts: {
 		require: [path.resolve(`./test/nativeScript/steps/**/*.js`)],
-		tags: `@All`,
+		tags: `@aliaksandr3`,
 		ignoreUncaughtExceptions: true,
 		format: `json:./reports/report.json`,
 	},

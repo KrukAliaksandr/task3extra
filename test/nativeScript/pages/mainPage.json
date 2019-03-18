@@ -1,12 +1,15 @@
 {
-    
     "SearchInput": {
         "type": "css",
         "selector": ".mp-search-input"
     },
     "HeaderTab": {
         "type": "css",
-        "selector": ".mp-tabs li"
+        "selector": "div[class='mp-tabs -dark'] li",
+        "isCollection": true
+    },
+    "ResultItemHeader": {
+        "type": "css",
+        "selector": ".mp-plugin-info h3"
     }
-    
 }

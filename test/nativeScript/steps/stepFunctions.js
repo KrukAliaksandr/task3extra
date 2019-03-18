@@ -39,14 +39,15 @@ let getElementFromCollectionByText = async (alias, text) => {
 	const items = await element.$$(itemsLocator);
 	logger.debug(items.length);
 	for (let i = 0; i < items.length; i++) {
-	  const itemText = await (items[i]).getText();
-	  logger.debug(itemText + ` - Inner Element text (getElementFromCollectionByText)`);
-	  if (itemText.includes(text)) {
+		const itemText = await (items[i]).getText();
+		logger.debug(itemText + ` - Inner Element text (getElementFromCollectionByText)`);
+		if (itemText.includes(text)) {
 			return items[i];
-	  }
+		}
 	}
 	throw new Error(`No element with text [${text}] in [${alias}]!`);
 };
+
 
 module.exports = {
 	getPageObjectElement,
