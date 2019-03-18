@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 const pageSelector = require(`../utils/pageSelector`);
+const logger = require(path.resolve(`./test/SanDisk/config/loggerConfig.js`)).logger;
 
 const getPageObjectElement = async (alias) => {
 	let pageElement = (await pageSelector.getPage())[alias];
@@ -24,7 +25,7 @@ let getSomeElementFromArray = async (position, alias) => {
 			element = elements[index];
 			break;
 		default:
-			logger.error(`Wrong element position: [${number}]`);
+			logger.error(`Wrong element position: [${position}]`);
 			throw new Error(`Wrong element position.`);
 		}
 	} else {

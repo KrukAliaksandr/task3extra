@@ -2,10 +2,10 @@
 /* eslint-disable no-unused-vars */
 const { Then } = require(`cucumber`);
 const path = require(`path`);
-const pageSelector = require(`../utils/pageSelector`);
 const stepFunctions = require(`./stepFunctions`);
-const { setDefaultTimeout } = require(`cucumber`);
 const { expect } = require(`chai`);
+const logger = require(path.resolve(`./test/SanDisk/config/loggerConfig.js`)).logger;
+
 
 
 Then(/^Count of "([^"]*)" should( not)? be "([^"]*)"$/, async (alias, notArg, expectedNumber) => {

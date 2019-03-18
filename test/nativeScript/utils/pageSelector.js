@@ -19,12 +19,9 @@ const pagesEnum = {
 const getPage = async () => {
 	let currentUrl = await browser.getCurrentUrl();
 	currentUrl = currentUrl.endsWith(`/`) ? currentUrl : currentUrl + `/`;
-	console.log(`currurl - ${currentUrl}`);
 	for (const page in pagesEnum) { // Check every ENUM page
 		for (let symptome of pagesEnum[page].symptomes) {
 			if (currentUrl.search(symptome) >= 0) {
-				console.log(`PageObject - ${page}`);
-				console.log(pagesEnum[page].po);
 				return pagesEnum[page].po;
 			}
 		}

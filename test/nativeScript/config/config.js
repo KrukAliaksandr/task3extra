@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 const path = require('path');
+const logger = require(path.resolve(`./test/nativeScript/config/loggerConfig.js`)).logger;
 
 exports.config = {
 	allScriptsTimeout: 20000,
@@ -15,11 +16,12 @@ exports.config = {
 	disableChecks:true,
 	cucumberOpts: {
 		require: [path.resolve(`./test/nativeScript/steps/**/*.js`)],
-		tags: `@aliaksandr3`,
+		tags: `@All`,
 		ignoreUncaughtExceptions: true,
 		format: `json:./reports/report.json`,
 	},
 	onPrepare: () => {
+		logger.info(`Maximizing browser window`);
 		browser.manage().window().maximize();
 	}
 };	
