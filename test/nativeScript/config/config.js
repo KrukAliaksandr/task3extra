@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 const path = require('path');
 const logger = require(path.resolve(`./test/nativeScript/config/loggerConfig.js`)).logger;
+const yargs = require(`yargs`).argv;
 
 exports.config = {
 	allScriptsTimeout: 20000,
@@ -9,14 +10,14 @@ exports.config = {
 	frameworkPath: require.resolve('protractor-cucumber-framework'),
 	specs: [path.resolve(`./test/nativeScript/features/*.feature`)],
 	capabilities: {
-		browserName: `chrome`,
-		shardTestFiles: false,
-		maxInstances: 1
+		browserName: yargs.browser || 'chrome',
+		shardTestFiles: yargs.instances > 1,
+		maxInstances: yargs.instances || 1
 	},
 	disableChecks:true,
 	cucumberOpts: {
 		require: [path.resolve(`./test/nativeScript/steps/**/*.js`)],
-		tags: `@All`,
+		tags: yargs.tags || '@All',
 		ignoreUncaughtExceptions: true,
 		format: `json:./reports/report.json`,
 	},

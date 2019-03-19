@@ -4,7 +4,7 @@ const { Then } = require(`cucumber`);
 const path = require(`path`);
 const stepFunctions = require(`./stepFunctions`);
 const { expect } = require(`chai`);
-const logger = require(path.resolve(`./test/SanDisk/config/loggerConfig.js`)).logger;
+const logger = require(path.resolve(`./test/nativeScript/config/loggerConfig.js`)).logger;
 
 
 
@@ -20,9 +20,9 @@ Then(/^Count of "([^"]*)" should( not)? be "([^"]*)"$/, async (alias, notArg, ex
 	}
 });
 
-Then(/^Class Attribute of "([^"]*)" from "([^"]*)" should( not)? be "([^"]*)"$/, async (position, alias, notArg, expectedValue) => {
+Then(/^Class Attribute of element "([^"]*)" from "([^"]*)" should( not)? be "([^"]*)"$/, async (position, alias, notArg, expectedValue) => {
 	notArg = notArg ? ` not` : ``;
-	const element = await (stepFunctions.getSomeElementFromArray(position, alias));
+	const element = await (stepFunctions.getSomeElementFromArray(position-1, alias));
 	const classAtr = await element.getAttribute('class');
 	if (notArg) {
 		return expect(classAtr).to.not.equal(expectedValue);
@@ -30,6 +30,18 @@ Then(/^Class Attribute of "([^"]*)" from "([^"]*)" should( not)? be "([^"]*)"$/,
 		return expect(classAtr).to.equal(expectedValue);
 	}
 
+});
+
+Then(/^Text of element "([^"]*)" from "([^"]*)" should( not)? be "([^"]*)"$/, async (position, alias, notArg, expectedValue) => {
+	notArg = notArg ? ` not` : ``;
+	const element = await (stepFunctions.getSomeElementFromArray(position-1, alias));
+	const elText = await element.getText();
+	if (notArg) {
+		return expect(elText).to.not.include(expectedValue);
+	} else {
+		return expect(elText).to.include(expectedValue);
+	}
+	
 });
 
 Then(/^Text of each "([^"]*)" should( not)? contain "([^"]*)"$/, async (alias, notArg, textToContain) => {
@@ -41,5 +53,6 @@ Then(/^Text of each "([^"]*)" should( not)? contain "([^"]*)"$/, async (alias, n
 			wrongStrings.push(await elements[i].getText());
 		}
 	}
-	return wrongStrings.length ? Promise.reject(new Error(`Strings not containing "${textToContain}":\n${wrongStrings.join(`\n`)}`)) : Promise.resolve();
+	
+	return wrongStrings.length ? Promise.reject(`Strings not containing "${textToContain}":\n${wrongStrings.join(`\n`)}`) : Promise.resolve();
 });

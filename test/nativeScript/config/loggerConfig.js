@@ -3,9 +3,6 @@ const path = require(`path`);
 const { createLogger, format, transports } = winston;
 const fs = require(`fs-extra`);
 
-fs.emptyDirSync(path.resolve(`./reports/`));
-fs.emptyDirSync(path.resolve(`./logs/`));
-
 let logger = createLogger({
 	transports: [
 		new transports.Console({
@@ -24,7 +21,7 @@ let logger = createLogger({
 		}),
 		new transports.File({
 			filename: path.resolve(`./logs/debug.log`),
-			level: `debug`,
+			level: `info`,
 			format: format.combine(
 				format.timestamp({ format: `YYYY-MM-DD HH:mm:ss` }),
 				format.simple()

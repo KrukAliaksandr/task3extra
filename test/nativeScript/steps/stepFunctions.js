@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 const pageSelector = require(`../utils/pageSelector`);
-const logger = require(path.resolve(`./test/SanDisk/config/loggerConfig.js`)).logger;
+const path = require('path');
+const logger = require(path.resolve(`./test/nativeScript/config/loggerConfig.js`)).logger;
 
 const getPageObjectElement = async (alias) => {
 	let pageElement = (await pageSelector.getPage())[alias];

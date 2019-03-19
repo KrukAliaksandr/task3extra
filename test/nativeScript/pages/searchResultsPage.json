@@ -1,5 +1,4 @@
 {
-    "Extends":
     "ResultItemHeader": {
         "type": "css",
         "selector": "li h3"

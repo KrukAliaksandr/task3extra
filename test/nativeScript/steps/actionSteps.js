@@ -19,6 +19,6 @@ When(/^I type "([^"]*)" in "([^"]*)"$/, async (text, alias) => {
   
 When(/^I click on "([^"]*)" element from "([^"]*)"$/, async (position, alias) => {
     
-	return (await stepFunctions.getSomeElementFromArray(position, alias)).click();
+	return (await stepFunctions.getSomeElementFromArray(position-1, alias)).click();
 });
   
